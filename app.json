@@ -1,0 +1,12 @@
+{
+  "name": "biztrack",
+  "displayName": "biztrack",
+  "expo": {
+    "name": "biztrack",
+    "slug": "biztrack",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
