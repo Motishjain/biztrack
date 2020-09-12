@@ -8,7 +8,7 @@ export class Home extends React.Component {
   render() {
     return (
       <View>
-        <Header firmName="Rolex Steel" />
+        <Header firmName="Marvel Steel" />
         <View style={styles.container}>
           <Text style={{ fontSize: 30 }}>Registration</Text>
         </View>
