@@ -1,10 +1,20 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Home } from "./app/views/home.js";
+import { Register } from "./app/views/Register.js";
+import { createSwitchNavigator, createAppContainer } from "react-navigation";
+import { Home } from "./app/views/Home.js";
 
-export default class App extends React.Component {
-  render() {
-    return <Home />;
+const MyRoutes = createSwitchNavigator(
+  {
+    Register: {
+      screen: Register,
+    },
+    Home: {
+      screen: Home,
+    },
+  },
+  {
+    initialRouteName: "Register",
   }
-}
+);
+
+export default createAppContainer(MyRoutes);
