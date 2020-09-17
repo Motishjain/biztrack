@@ -43,15 +43,14 @@ export class Register extends React.Component {
       try {
         console.log(JSON.stringify(this.state))
         const a = await fetch('http://localhost:9000/firms/', {
-          method: 'get',
-          mode: 'no-cors',
+          method: 'post',
           headers: {
-            'Accept': 'application/json',
             'Content-Type': 'application/json'
-          }
-          // },
-          // body: JSON.stringify(this.state)
-        }).then(response => { console.log(JSON.stringify(response)) })
+          },
+          body: JSON.stringify(this.state)
+        }).then(response => {
+          console.log(response.json())
+        })
         this.props.navigation.navigate("Home");
       } catch (err) {
         console.log(err)
