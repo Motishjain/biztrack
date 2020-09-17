@@ -43,7 +43,7 @@ export class Register extends React.Component {
       try {
         console.log(JSON.stringify(this.state))
         const a = await fetch('http://localhost:9000/firms/', {
-          method: 'post',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
