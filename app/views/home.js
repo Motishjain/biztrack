@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Header } from "../sections/Header.js";
 
 import { createAppContainer } from "react-navigation";
+import { NavigationContainer } from "@react-navigation/native";
 
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
 
@@ -10,8 +11,9 @@ export class PublicEnquiriesScreen extends React.Component {
   render() {
     return (
       <View>
-        <Header firmName="Marvel Steel" />
-        <View style={styles.container}></View>
+        <View style={styles.container}>
+          <Text>Hello</Text>
+        </View>
       </View>
     );
   }
@@ -21,17 +23,39 @@ export class YourEnquiriesScreen extends React.Component {
   render() {
     return (
       <View>
-        <Header firmName="Marvel Steel" />
         <View style={styles.container}></View>
       </View>
     );
   }
 }
 
-const TabNavigator = createMaterialTopTabNavigator({
-  PublicEnquiries: PublicEnquiriesScreen,
-  YourEnquiries: YourEnquiriesScreen,
-});
+const TabNavigator = createMaterialTopTabNavigator(
+  {
+    "Public Enquiries": PublicEnquiriesScreen,
+    "Your Enquiries": YourEnquiriesScreen,
+  },
+  {
+    tabBarPosition: "top",
+    tabBarOptions: {
+      activeTintColor: "#222",
+      activeBackgroundColor: "yellow", //Doesn't work
+      showIcon: true,
+      tabStyle: {
+        padding: 0,
+        margin: 0, //Padding 0 here
+      },
+      iconStyle: {
+        width: 30,
+        height: 30,
+        padding: 0, //Padding 0 here
+      },
+      labelStyle: {
+        margin: 10,
+        paddingTop: 10,
+      },
+    },
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -42,8 +66,10 @@ const styles = StyleSheet.create({
   },
 });
 
+const Navigator = createAppContainer(TabNavigator);
+
 export class Home extends React.Component {
   render() {
-    return createAppContainer(TabNavigator);
+    return <Navigator style={{ paddingTop: 10 }} />;
   }
 }
