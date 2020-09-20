@@ -2,20 +2,36 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Header } from "../sections/Header.js";
 
-import { openDatabase } from "react-native-sqlite-storage";
+import { createAppContainer } from "react-navigation";
 
-export class Home extends React.Component {
+import { createMaterialTopTabNavigator } from "react-navigation-tabs";
+
+export class PublicEnquiriesScreen extends React.Component {
   render() {
     return (
       <View>
         <Header firmName="Marvel Steel" />
-        <View style={styles.container}>
-          <Text style={{ fontSize: 30 }}>Enquiries</Text>
-        </View>
+        <View style={styles.container}></View>
       </View>
     );
   }
 }
+
+export class YourEnquiriesScreen extends React.Component {
+  render() {
+    return (
+      <View>
+        <Header firmName="Marvel Steel" />
+        <View style={styles.container}></View>
+      </View>
+    );
+  }
+}
+
+const TabNavigator = createMaterialTopTabNavigator({
+  PublicEnquiries: PublicEnquiriesScreen,
+  YourEnquiries: YourEnquiriesScreen,
+});
 
 const styles = StyleSheet.create({
   container: {
@@ -25,3 +41,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export class Home extends React.Component {
+  render() {
+    return createAppContainer(TabNavigator);
+  }
+}

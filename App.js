@@ -13,7 +13,7 @@ const MyRoutes = createSwitchNavigator(
     },
   },
   {
-    initialRouteName: "Register",
+    initialRouteName: "Home",
   }
 );
 

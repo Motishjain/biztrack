@@ -1,5 +1,5 @@
 import React from "react";
-const axios = require('axios')
+const axios = require("axios");
 
 import {
   StyleSheet,
@@ -27,8 +27,6 @@ export class Register extends React.Component {
     };
   }
 
-
-
   registerAccount = async () => {
     if (this.state.firmName == "" || this.state.firmName == null) {
       alert("Please enter firm name");
@@ -36,40 +34,43 @@ export class Register extends React.Component {
       alert("Please enter cell number");
     } else if (this.state.groupCode == "" || this.state.groupCode == null) {
       alert("Please enter your market secret code");
-    } else if (this.state.telecomNumber == "" || this.state.telecomNumber == null) {
+    } else if (
+      this.state.telecomNumber == "" ||
+      this.state.telecomNumber == null
+    ) {
       alert("Please enter your telecom number");
     } else {
       AsyncStorage.setItem("firmName", this.state.firmName);
       try {
-        console.log(JSON.stringify(this.state))
-        const a = await fetch('http://localhost:9000/firms/', {
-          method: 'POST',
+        console.log(JSON.stringify(this.state));
+        const a = await fetch("http://localhost:8080/firms/", {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify(this.state)
-        }).then(response => {
-          console.log(response.json())
-        })
+          body: JSON.stringify(this.state),
+        }).then((response) => {
+          console.log(response.json());
+        });
         this.props.navigation.navigate("Home");
       } catch (err) {
-        console.log(err)
+        console.log(err);
       }
     }
   };
 
-  register = () => { };
+  register = () => {};
 
   render() {
-
     return (
       <View style={styles.container}>
         <View style={styles.middle}>
           <Text style={styles.textContainer}>You are ready to go with</Text>
           <Text style={styles.textContainer}>BizTrack</Text>
           <View style={styles.formArea}>
-
-            <Text style={[styles.textContainer, styles.signin]}>Register Your Firm</Text>
+            <Text style={[styles.textContainer, styles.signin]}>
+              Register Your Firm
+            </Text>
             <View style={styles.mainForm}>
               <View style={styles.formItems}>
                 <TextInput
@@ -102,12 +103,18 @@ export class Register extends React.Component {
                   style={styles.input}
                   placeholder="Telecom number (Hughes)"
                   keyboardType="numeric"
-                  onChangeText={(text) => this.setState({ telecomNumber: text })}
+                  onChangeText={(text) =>
+                    this.setState({ telecomNumber: text })
+                  }
                   value={this.state.telecomNumber}
                 />
               </View>
               <View style={styles.button}>
-                <TouchableHighlight block style={styles.mainBtn} onPress={this.registerAccount}>
+                <TouchableHighlight
+                  block
+                  style={styles.mainBtn}
+                  onPress={this.registerAccount}
+                >
                   <Text style={styles.btnText}>Register</Text>
                 </TouchableHighlight>
               </View>
@@ -117,81 +124,81 @@ export class Register extends React.Component {
       </View>
     );
   }
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: 'relative',
-    backgroundColor: 'black',
+    position: "relative",
+    backgroundColor: "black",
   },
   top: {
-    position: 'relative',
-    backgroundColor: 'black',
+    position: "relative",
+    backgroundColor: "black",
     paddingRight: 12.7,
     paddingLeft: 12.7,
     height: 250,
   },
   middle: {
-    width: '100%',
-    height: '100%',
+    width: "100%",
+    height: "100%",
     flex: 1,
-    position: 'absolute',
+    position: "absolute",
     zIndex: 3,
-    backgroundColor: 'transparent',
+    backgroundColor: "transparent",
     paddingLeft: 26.3,
     paddingRight: 26.3,
   },
   bottom: {
-    position: 'relative',
-    height: '100%',
+    position: "relative",
+    height: "100%",
     paddingRight: 12.7,
     paddingLeft: 12.7,
-    backgroundColor: '#5257F2',
+    backgroundColor: "#5257F2",
   },
   textContainer: {
-    color: '#FCFDFF',
+    color: "#FCFDFF",
     fontSize: 24,
     marginBottom: 10,
-    position: 'relative',
-    top: '10%',
-    alignSelf: 'center',
+    position: "relative",
+    top: "10%",
+    alignSelf: "center",
   },
   formArea: {
-    alignSelf: 'center',
-    width: '100%',
-    backgroundColor: '#ffffff',
+    alignSelf: "center",
+    width: "100%",
+    backgroundColor: "#ffffff",
     borderRadius: 5,
-    top: '20%',
+    top: "20%",
     paddingBottom: 40,
   },
   signin: {
     top: 0,
-    color: '#2D3057',
+    color: "#2D3057",
     marginTop: 15,
   },
   formItems: {
     marginTop: 15,
-    borderBottomColor: '#2D3057',
+    borderBottomColor: "#2D3057",
     paddingLeft: 20,
   },
   input: {
     fontSize: 12,
-    alignSelf: 'center',
-    width: '50%',
+    alignSelf: "center",
+    width: "50%",
   },
   loginAs: {
     paddingLeft: 46.6,
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     marginTop: 15,
     marginBottom: 20,
-    alignItems: 'center',
+    alignItems: "center",
   },
   loginText: {
-    color: '#2D3057',
+    color: "#2D3057",
     fontSize: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   cboxText: {
     fontSize: 10,
@@ -199,19 +206,18 @@ const styles = StyleSheet.create({
   button: {
     padding: 30.8,
     borderRadius: 4,
-    height: '100%',
+    height: "100%",
   },
   mainBtn: {
-    backgroundColor: 'black',
-    width: '50%',
-    height: '20%',
-    alignSelf: 'center',
-
+    backgroundColor: "black",
+    width: "50%",
+    height: "20%",
+    alignSelf: "center",
   },
   btnText: {
-    color: 'white',
+    color: "white",
     fontSize: 19,
-    alignSelf: 'center',
+    alignSelf: "center",
     paddingTop: 6,
   },
 });
