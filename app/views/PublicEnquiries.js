@@ -1,43 +1,28 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { Header } from "../sections/Header.js";
+import { FlatList } from "react-native-gesture-handler";
+import PublicEnquiryCard from "./PublicEnquiryCard";
 
-import { createTopTabNavigator, createAppContainer } from "react-navigation";
-
-export class PublicEnquiriesScreen extends React.Component {
+export class PublicEnquiries extends React.Component {
   render() {
+    let enquiries = [
+      { grade: "304", form: "Sheet", description: "1000kgs" },
+      { grade: "316", form: "Coil", description: "500kgs" },
+    ];
     return (
-      <View>
-        <Header firmName="Marvel Steel" />
-        <View style={styles.container}></View>
+      <View style={styles.container}>
+        <FlatList
+          data={enquiries}
+          renderItem={({ item }) => <PublicEnquiryCard enquiry={item} />}
+        />
       </View>
     );
   }
 }
-
-export class YourEnquiriesScreen extends React.Component {
-  render() {
-    return (
-      <View>
-        <Header firmName="Marvel Steel" />
-        <View style={styles.container}></View>
-      </View>
-    );
-  }
-}
-
-const TabNavigator = createTopTabNavigator({
-  PublicEnquiries: PublicEnquiriesScreen,
-  YourEnquiries: YourEnquiriesScreen,
-});
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 10,
     backgroundColor: "#fff",
-    alignItems: "center",
   },
 });
-
-export default createAppContainer(TabNavigator);

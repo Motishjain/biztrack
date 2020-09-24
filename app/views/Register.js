@@ -9,7 +9,6 @@ import {
   Alert,
   AsyncStorage,
 } from "react-native";
-import { Header } from "../sections/Header.js";
 
 import { openDatabase } from "react-native-sqlite-storage";
 import { TouchableHighlight } from "react-native-gesture-handler";

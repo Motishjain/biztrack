@@ -3,36 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import { Header } from "../sections/Header.js";
 
 import { createAppContainer } from "react-navigation";
-import { NavigationContainer } from "@react-navigation/native";
+import { PublicEnquiries } from "./PublicEnquiries";
 
 import { createMaterialTopTabNavigator } from "react-navigation-tabs";
-
-export class PublicEnquiriesScreen extends React.Component {
-  render() {
-    return (
-      <View>
-        <View style={styles.container}>
-          <Text>Hello</Text>
-        </View>
-      </View>
-    );
-  }
-}
-
-export class YourEnquiriesScreen extends React.Component {
-  render() {
-    return (
-      <View>
-        <View style={styles.container}></View>
-      </View>
-    );
-  }
-}
+import { YourEnquiries } from "./YourEnquiries.js";
 
 const TabNavigator = createMaterialTopTabNavigator(
   {
-    "Public Enquiries": PublicEnquiriesScreen,
-    "Your Enquiries": YourEnquiriesScreen,
+    "Public Enquiries": PublicEnquiries,
+    "Your Enquiries": YourEnquiries,
   },
   {
     tabBarPosition: "top",
